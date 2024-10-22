@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrimplybetter.me</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #a9c7f7; /* Blue hue */
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            position: relative; /* Needed for absolutely positioned images */
+            overflow: hidden; /* Prevents scrollbars from appearing */
+        }
+        .text-container {
+            border: 5px solid white; /* White border */
+            padding: 20px; /* Padding around text */
+            border-radius: 10px; /* Rounded corners */
+            backdrop-filter: blur(10px); /* Optional: adds a blur effect behind the text */
+            position: relative; /* Ensures the text stays above the images */
+            z-index: 1; /* Brings text to the front */
+        }
+        h1 {
+            font-size: 4em;
+            margin: 0;
+        }
+        p {
+            font-size: 1.5em;
+            margin: 0;
+        }
+        .shrimp {
+            position: absolute;
+            opacity: 0.3; /* Fades the shrimp images */
+            width: 100px; /* Size of shrimp images */
+        }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        <h1>Shrimplybetter.me</h1>
+        <p>get the username on bsky.app that you want</p>
+    </div>
+    <script>
+        const shrimpCount = 10; // Number of shrimp images
+        const body = document.body;
+
+        for (let i = 0; i < shrimpCount; i++) {
+            const shrimpImg = document.createElement('img');
+            shrimpImg.src = 'https://icons.veryicon.com/png/o/food--drinks/dining-color-icon/shrimp-22.png';
+            shrimpImg.classList.add('shrimp');
+
+            // Set random position
+            shrimpImg.style.top = Math.random() * 100 + 'vh'; // Random vertical position
+            shrimpImg.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+
+            body.appendChild(shrimpImg);
+        }
+    </script>
+</body>
+</html>
