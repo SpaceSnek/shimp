@@ -3,65 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shrimplybetter.me</title>
+    <title>shrimplybetter.me</title>
     <style>
+        /* Set the background color and make the page take full height */
         body {
+            margin: 0;
+            padding: 0;
+            background-color: #2D2D34; /* Updated background color */
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Stack elements vertically */
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #a9c7f7; /* Blue hue */
+            font-family: 'Inter', sans-serif; /* Use the Inter font */
             color: white;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            position: relative; /* Needed for absolutely positioned images */
-            overflow: hidden; /* Prevents scrollbars from appearing */
+            overflow: hidden; /* Prevents overflow due to animation */
         }
-        .text-container {
-            border: 5px solid white; /* White border */
-            padding: 20px; /* Padding around text */
-            border-radius: 10px; /* Rounded corners */
-            backdrop-filter: blur(10px); /* Optional: adds a blur effect behind the text */
-            position: relative; /* Ensures the text stays above the images */
-            z-index: 1; /* Brings text to the front */
+
+        /* Animated Wave Effect for the Background */
+        @keyframes waveAnimation {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 200% 0; /* Move the background horizontally */
+            }
         }
-        h1 {
-            font-size: 4em;
-            margin: 0;
-        }
-        p {
-            font-size: 1.5em;
-            margin: 0;
-        }
-        .shrimp {
+
+        /* Animated Gradient for the background */
+        .wave-background {
             position: absolute;
-            opacity: 0.3; /* Fades the shrimp images */
-            width: 100px; /* Size of shrimp images */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #2D2D34 25%, #3F3F4A 50%, #2D2D34 75%);
+            background-size: 200% 100%; /* Large enough gradient to tile smoothly */
+            animation: waveAnimation 10s linear infinite; /* Smooth and slow animation */
+            z-index: -1; /* Places the wave animation behind other content */
         }
+
+        /* Center the textbox and style it */
+        .textbox {
+            background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 2rem; /* Adjustable font size */
+            text-align: center;
+            max-width: 80%; /* Limit width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Drop shadow */
+            letter-spacing: 1px; /* Slight spacing between letters */
+            margin-bottom: 30px; /* Space between the textbox and buttons */
+        }
+
+        /* Style for the buttons (links styled as buttons) */
+        .button {
+            background-color: #B97375; /* Updated button background color */
+            color: white;
+            border: none; /* Remove the border */
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            margin: 10px; /* Space between buttons */
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Same drop shadow as textbox */
+            text-decoration: none; /* Remove underline from links */
+            display: inline-block; /* Ensure the links behave like buttons */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* Hover effect for the buttons */
+        .button:hover {
+            background-color: #9E5D5A; /* Darker shade of the button color on hover */
+            transform: translateY(-3px); /* Slight lift effect on hover */
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .textbox {
+                font-size: 1.5rem;
+                padding: 15px 30px;
+            }
+            .button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+
+        /* Import Inter font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
     </style>
 </head>
 <body>
-    <div class="text-container">
-        <h1>Shrimplybetter.me</h1>
-        <p>get the username on bsky.app that you want</p>
+    <!-- Wave Background -->
+    <div class="wave-background"></div>
+
+    <!-- Main content -->
+    <div class="textbox">
+        🦐 shrimplybetter.me ☁️
     </div>
-    <script>
-        const shrimpCount = 10; // Number of shrimp images
-        const body = document.body;
 
-        for (let i = 0; i < shrimpCount; i++) {
-            const shrimpImg = document.createElement('img');
-            shrimpImg.src = 'https://icons.veryicon.com/png/o/food--drinks/dining-color-icon/shrimp-22.png';
-            shrimpImg.classList.add('shrimp');
-
-            // Set random position
-            shrimpImg.style.top = Math.random() * 100 + 'vh'; // Random vertical position
-            shrimpImg.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
-
-            body.appendChild(shrimpImg);
-        }
-    </script>
+    <!-- Buttons Section -->
+    <div class="button-container">
+        <a href="project.html" class="button">Project</a>
+        <a href="join.html" class="button">Join</a>
+        <a href="about.html" class="button">About</a>
+    </div>
 </body>
 </html>
